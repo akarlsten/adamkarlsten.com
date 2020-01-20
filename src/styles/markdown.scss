@@ -1,0 +1,42 @@
+// For styling the generated Markdown HTML in blog posts and project pages
+
+.markdown {
+  li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  blockquote {
+    background: lighten($black, 5%);
+    background: linear-gradient(90deg, rgba(29, 32, 50, 1) 0%, rgba(20, 22, 34, 1) 50%);
+    border-left: 5px solid $yellow;
+    padding: {
+      top: 0.1rem;
+      bottom: 0.1rem;
+      left: 1.5rem;
+    }
+    margin: {
+      left: 0;
+      right: 1.5rem;
+      top: 1.5rem;
+      bottom: 1.5rem;
+    }
+    color: $yellow;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 3.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  @include phone {
+    li {
+      font-size: 1rem;
+    }
+  }
+}

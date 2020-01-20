@@ -1,0 +1,49 @@
+.project__content {
+  margin-bottom: 2rem;
+}
+
+.project__header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.project__imagecontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.project__image {
+  border: 10px solid $yellow;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  @include phone {
+    border: 5px solid $yellow;
+  }
+}
+
+.project__links {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  @include smallphone {
+    p {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.project__link {
+  font-weight: 500;
+  display: flex;
+
+  align-items: center;
+}
+
+.project__icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}

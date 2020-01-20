@@ -1,0 +1,51 @@
+.blog__header {
+  margin-bottom: 2rem;
+
+  @include phone {
+    margin-bottom: 1rem;
+  }
+}
+
+.blog__title {
+  font-weight: 500;
+}
+
+.blog__subheader {
+  display: flex;
+}
+.blog__date {
+  font-size: 1rem;
+  font-weight: 500;
+  color: $yellow;
+}
+
+.blog__commentcounter {
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  span {
+    margin-left: 0.5rem;
+  }
+
+  @include phone {
+    font-size: 1rem;
+  }
+}
+
+.blog__imagecontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.blog__image {
+  border: 10px solid $yellow;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  @include phone {
+    border: 5px solid $yellow;
+  }
+}

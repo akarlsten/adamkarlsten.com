@@ -1,0 +1,24 @@
+// Blog post list
+.postlist {
+  margin-top: 4em;
+}
+
+.postlist__post {
+  margin-bottom: 4rem;
+
+  &:last-of-type {
+    margin-bottom: 6rem;
+  }
+}
+
+.postlist__posttitle {
+  font-weight: 300;
+}
+
+// latest post
+
+.latestpost {
+  h3 {
+    margin-bottom: 1rem;
+  }
+}

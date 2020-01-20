@@ -1,0 +1,53 @@
+// Colors
+$white: #f2f2f2;
+$black: #141622;
+$yellow: #ffcc59;
+
+// Font sizing (everything else scales off these)
+$smallest: 12px;
+$smaller: 14px;
+$defaultsize: 16px;
+$biggersize: 18px;
+$verybig: 22px;
+
+//Media query sizing
+$phone: 600px;
+$tablet: 768px;
+$laptop: 992px;
+$desktop: 1350px;
+
+//for underlines
+$underline-color: $yellow;
+$underline-color-background: $black;
+$underline-color-selected: $yellow;
+
+// Media query mixins
+@mixin smallphone {
+  @media (max-width: #{$phone}) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$laptop - 1px}) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: #{$desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}

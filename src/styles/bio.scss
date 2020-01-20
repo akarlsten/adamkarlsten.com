@@ -1,0 +1,39 @@
+.bio {
+  margin-top: 4rem;
+  margin-bottom: 6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  @include phone {
+    margin-top: 0;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+}
+
+.bio__header {
+  align-self: center;
+}
+
+.bio__avatar {
+  border-radius: 100%;
+  width: 50%;
+
+  @include phone {
+    margin: {
+      top: 2rem;
+      bottom: 2rem;
+    }
+    width: 35%;
+  }
+}
+
+.bio__text {
+  margin-left: 3rem;
+
+  @include phone {
+    margin-left: 0;
+  }
+}

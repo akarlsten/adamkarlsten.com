@@ -1,0 +1,80 @@
+// Header
+.mainheader {
+  background-color: $black;
+  margin: {
+    top: 2rem;
+  }
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  min-width: 100%;
+  transition: height 0.3s ease;
+
+  @include laptop {
+    justify-content: space-between;
+  }
+
+  @include tablet {
+    margin: {
+      top: 1rem;
+    }
+  }
+}
+
+.mainheader__title {
+  font-style: italic;
+  margin-left: 2rem;
+
+  @include tablet {
+    margin-left: 1.5rem;
+    font-size: 3rem;
+  }
+
+  @include smallphone {
+    margin-left: 1rem;
+    font-size: 2rem;
+  }
+}
+
+.mainheader__menu {
+  margin-right: 2rem;
+
+  ul {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+    li {
+      margin-left: 1rem;
+    }
+  }
+
+  @include tablet {
+    margin-right: 1.5rem;
+    h3 {
+      font-size: 2rem;
+    }
+  }
+
+  @include smallphone {
+    margin-right: 1rem;
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.mainheader__menuitem {
+  @include link-underline($underline-color-background, $underline-color, $underline-color-selected);
+
+  .mainheader__menuitem--active {
+    color: $white;
+    &:hover {
+      color: $white;
+    }
+  }
+}

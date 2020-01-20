@@ -1,0 +1,51 @@
+.projectlist {
+  margin-top: 4em;
+}
+
+.projectlist__post {
+  margin-bottom: 4rem;
+  border-bottom: 1px solid $yellow;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &:last-of-type {
+    margin-bottom: 6rem;
+    border-bottom: 0;
+  }
+
+  @include phone {
+    margin-bottom: 2rem;
+  }
+}
+
+.projectlist__posttitle {
+  font-weight: 300;
+}
+
+.projectlist__imagecontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.projectlist__image {
+  border: 10px solid $yellow;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 2rem;
+
+  @include phone {
+    border: 5px solid $yellow;
+  }
+}
+
+.projectlist__postexcerpt {
+  margin-bottom: 4rem;
+
+  @include phone {
+    margin-bottom: 2rem;
+  }
+}

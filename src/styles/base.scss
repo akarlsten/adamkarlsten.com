@@ -1,0 +1,54 @@
+// Base elements
+
+html {
+  font-size: $defaultsize;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background-color: $black;
+  color: $white;
+  font-family: neue-haas-unica, sans-serif;
+  font-weight: 300;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  max-width: 960px;
+  margin: {
+    top: 6rem;
+  }
+  flex: 1;
+
+  @include tablet {
+    margin: {
+      top: 3rem;
+      left: 2rem;
+      right: 2rem;
+    }
+  }
+
+  @include phone {
+    margin: {
+      top: 2rem;
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+
+  @include smallphone {
+    margin: {
+      left: 1rem;
+      right: 1rem;
+    }
+  }
+}
