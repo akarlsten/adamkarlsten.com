@@ -8,6 +8,7 @@
 import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
+import Logo from './logo'
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -36,7 +37,8 @@ const Bio = () => {
         alt={author}
       />
       <div className="bio__text">
-        <h1>Hej!</h1>
+        <Logo />
+        {/* <h1>Hej!</h1> */}
         <p>
           I&apos;m <strong>{author}</strong>, a web developer from Malmö, <span role="img" aria-label='Sweden'>🇸🇪</span>. I&apos;m currently studying web development at Linnaeus University.
         </p>

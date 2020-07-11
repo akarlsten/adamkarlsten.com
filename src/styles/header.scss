@@ -1,6 +1,5 @@
 // Header
 .mainheader {
-  background-color: $black;
   margin: {
     top: 2rem;
   }
@@ -69,7 +68,11 @@
 }
 
 .mainheader__menuitem {
-  @include link-underline($underline-color-background, $underline-color, $underline-color-selected);
+  @include link-underline(
+    $underline-color-background,
+    $underline-color,
+    $underline-color-selected
+  );
 
   .mainheader__menuitem--active {
     color: $white;
