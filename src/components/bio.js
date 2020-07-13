@@ -29,6 +29,7 @@ const Bio = () => {
   `)
 
   const { author } = data.site.siteMetadata
+
   return (
     <div className="bio">
       <Image
@@ -37,7 +38,9 @@ const Bio = () => {
         alt={author}
       />
       <div className="bio__text">
-        <Logo />
+      <div className="bio__logo">
+          <Logo />
+      </div>
         {/* <h1>Hej!</h1> */}
         <p>
           I&apos;m <strong>{author}</strong>, a web developer from Malmö, <span role="img" aria-label='Sweden'>🇸🇪</span>. I&apos;m currently studying web development at Linnaeus University.
