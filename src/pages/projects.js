@@ -11,6 +11,7 @@ class ProjectsIndex extends React.Component {
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
 
+  
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Projects" />
@@ -18,7 +19,6 @@ class ProjectsIndex extends React.Component {
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             const featuredImg = node.frontmatter.featuredImage
-
             return (
               <article key={node.fields.slug} className="projectlist__post">
                 <header>
@@ -35,13 +35,22 @@ class ProjectsIndex extends React.Component {
                     </Link>
                   </h4>
                 </header>
-                <section>
+                <section className="projectlist__excerptcontainer">
                   <p
                     dangerouslySetInnerHTML={{
                       __html: node.frontmatter.description || node.excerpt
                     }}
                     className="projectlist__postexcerpt"
                   />
+                  {node.frontmatter.tags && (
+                    <div className="projectlist__tagcontainer">
+                    {
+                      node.frontmatter.tags.map(tag => (
+                        <div className="projectlist__tag">{tag}</div>
+                      ))
+                    }
+                    </div>
+                  )}
                 </section>
               </article>
             )
@@ -76,6 +85,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tags
             featuredImage {
               childImageSharp {
                 fluid(maxWidth: 800) {

@@ -33,6 +33,15 @@ class BlogPostTemplate extends React.Component {
               <Img className="project__image" fluid={post.frontmatter.featuredImage.childImageSharp.fluid} />
             </div>
           }
+          {post.frontmatter.tags && (
+            <div className="projectlist__tagcontainer">
+              {
+                post.frontmatter.tags.map(tag => (
+                  <div className="projectlist__tag">{tag}</div>
+                ))
+              }
+            </div>
+          )}
           {(post.frontmatter.github || post.frontmatter.url) &&
             <IconContext.Provider value={{ className: 'project__icon' }}>
               <div className="project__links">
@@ -94,6 +103,7 @@ export const pageQuery = graphql`
         description
         github
         url
+        tags
         featuredImage {
               childImageSharp {
                 fluid(maxWidth: 800) {

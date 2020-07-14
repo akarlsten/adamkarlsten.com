@@ -42,7 +42,7 @@ function Jumbo() {
   return (
     <>
     <group ref={ref}>
-      <Text hAlign="center" position={[0, 0, 0]} rotation={[0.1, 0.3, 0, 'XYZ']} children="Hej!" />
+      <Text hAlign="center" position={[0, 3, 0]} rotation={[0.1, 0.3, 0, 'XYZ']} children="Hej!" />
     </group>
     </>
   )

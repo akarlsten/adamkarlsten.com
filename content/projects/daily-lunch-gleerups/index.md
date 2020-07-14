@@ -5,6 +5,7 @@ description: "A Gatsby frontend for a Node REST API that scrapes local restauran
 featuredImage: lunch-gleerups.png
 github: "https://github.com/akarlsten/gleerups-lunch"
 url: "https://lunch.adamkarlsten.com"
+tags: ["Gatsby", "React", "Express", "Node", "Web Scraping"]
 ---
 
 A Gatsby frontend for a Node REST API that scrapes local restaurant menus near my old job every day. Also has some fun stuff like geolocation; to see how far away each restaurant is and to generate dynamic directions via Google.
