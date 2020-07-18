@@ -1,15 +1,15 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
-import { IconContext } from 'react-icons'
-import { FaCommentDots } from 'react-icons/fa'
+import React from "react"
+import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
+import { Disqus, CommentCount } from "gatsby-plugin-disqus"
+import { IconContext } from "react-icons"
+import { FaCommentDots } from "react-icons/fa"
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 class BlogPostTemplate extends React.Component {
-  render () {
+  render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
@@ -17,10 +17,11 @@ class BlogPostTemplate extends React.Component {
     const disqusConfig = {
       url: `${siteUrl}/${post.fields.sourceInstanceName}${post.fields.slug}`,
       identifier: post.id,
-      title: post.frontmatter.title
+      title: post.frontmatter.title,
     }
     const { featuredImage } = post.frontmatter
-    const featuredImagePath = featuredImage && featuredImage.childImageSharp.fluid.src
+    const featuredImagePath =
+      featuredImage && featuredImage.childImageSharp.fluid.src
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -31,26 +32,29 @@ class BlogPostTemplate extends React.Component {
         />
         <article>
           <header className="blog__header">
-            <h3 className="blog__title">
-              {post.frontmatter.title}
-            </h3>
+            <h3 className="blog__title">{post.frontmatter.title}</h3>
             <div className="blog__subheader">
-              <p className="blog__date">
-                {post.frontmatter.date}
-              </p>
+              <p className="blog__date">{post.frontmatter.date}</p>
               <div className="blog__commentcounter">
-                <IconContext.Provider value={{ className: 'blog__icon' }}>
-                  <FaCommentDots /> <CommentCount config={disqusConfig} placeholder={'...'} />
+                <IconContext.Provider value={{ className: "blog__icon" }}>
+                  <FaCommentDots />{" "}
+                  <CommentCount config={disqusConfig} placeholder={"..."} />
                 </IconContext.Provider>
               </div>
             </div>
           </header>
-          {post.frontmatter.featuredImage &&
+          {post.frontmatter.featuredImage && (
             <div className="blog__imagecontainer">
-              <Img className="blog__image" fluid={post.frontmatter.featuredImage.childImageSharp.fluid} />
+              <Img
+                className="blog__image"
+                fluid={post.frontmatter.featuredImage.childImageSharp.fluid}
+              />
             </div>
-          }
-          <section className="markdown" dangerouslySetInnerHTML={{ __html: post.html }} />
+          )}
+          <section
+            className="markdown"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
         </article>
 
         <nav className="post__navigation">

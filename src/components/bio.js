@@ -5,19 +5,19 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
-import Logo from './logo'
+import React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import Image from "gatsby-image"
+import Logo from "./logo"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-            fluid(maxWidth: 500) {
-              ...GatsbyImageSharpFluid
-            }
+          fluid(maxWidth: 500) {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
       site {
@@ -38,14 +38,21 @@ const Bio = () => {
         alt={author}
       />
       <div className="bio__text">
-      <div className="bio__logo">
+        <div className="bio__logo">
           <Logo />
-      </div>
+        </div>
         {/* <h1>Hej!</h1> */}
         <p>
-          I&apos;m <strong>{author}</strong>, a web developer from Malmö, <span role="img" aria-label='Sweden'>🇸🇪</span>. I&apos;m currently studying web development at Linnaeus University.
+          I&apos;m <strong>{author}</strong>, a web developer from Malmö,{" "}
+          <span role="img" aria-label="Sweden">
+            🇸🇪
+          </span>
+          . I&apos;m currently studying web development at Linnaeus University.
         </p>
-        <p>Have a look at some of the <Link to={'/projects'}>projects</Link> I&apos;ve worked on, or check out my <Link to={'/blog'}>blog</Link>!</p>
+        <p>
+          Have a look at some of the <Link to={"/projects"}>projects</Link>{" "}
+          I&apos;ve worked on, or check out my <Link to={"/blog"}>blog</Link>!
+        </p>
       </div>
     </div>
   )

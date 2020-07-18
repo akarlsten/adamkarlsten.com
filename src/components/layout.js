@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react"
 
-import Header from './header'
+import Header from "./header"
 
-import '../styles/styles.scss'
+import "../styles/styles.scss"
 
-const Layout = (props) => {
+const Layout = props => {
   const { title, children } = props
 
   return (

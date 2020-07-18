@@ -2,6 +2,7 @@
 title: This page!
 date: "2019-11-19"
 featuredImage: adamblog.png
+tags: ["Gatsby", "React", "Javascript"]
 ---
 
 This portfolio website and blog was build entirely with Gatsby, originally as part of an exam assignment for the course 1DV022 Client-based web programming at Linnaeus University.

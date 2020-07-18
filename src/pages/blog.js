@@ -1,11 +1,11 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
+import React from "react"
+import { Link, graphql } from "gatsby"
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 class BlogIndex extends React.Component {
-  render () {
+  render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
@@ -17,10 +17,15 @@ class BlogIndex extends React.Component {
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
-              <article key={`/${node.fields.sourceInstanceName}${node.fields.slug}`} className="postlist__post">
+              <article
+                key={`/${node.fields.sourceInstanceName}${node.fields.slug}`}
+                className="postlist__post"
+              >
                 <header>
                   <h4 className="postlist__posttitle">
-                    <Link to={`/${node.fields.sourceInstanceName}${node.fields.slug}`}>
+                    <Link
+                      to={`/${node.fields.sourceInstanceName}${node.fields.slug}`}
+                    >
                       {title}
                     </Link>
                   </h4>
@@ -28,7 +33,7 @@ class BlogIndex extends React.Component {
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt
+                      __html: node.frontmatter.description || node.excerpt,
                     }}
                     className="postlist__postexcerpt"
                   />
@@ -52,9 +57,9 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: {fields: {sourceInstanceName: {eq: "blog"}}}
+      filter: { fields: { sourceInstanceName: { eq: "blog" } } }
       sort: { fields: [frontmatter___date], order: DESC }
-      ) {
+    ) {
       edges {
         node {
           excerpt

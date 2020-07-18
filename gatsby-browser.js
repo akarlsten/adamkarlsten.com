@@ -1,2 +1,1 @@
-
-require('typeface-inconsolata')
+require("typeface-inconsolata")

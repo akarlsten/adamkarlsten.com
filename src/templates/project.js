@@ -1,19 +1,21 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import { IconContext } from 'react-icons'
-import { FaGithub, FaLink } from 'react-icons/fa'
+import React from "react"
+import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
+import { IconContext } from "react-icons"
+import { FaGithub, FaLink } from "react-icons/fa"
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import { TagContainer, Tag } from "../components/tag"
 
 class BlogPostTemplate extends React.Component {
-  render () {
+  render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next, subdirectory } = this.props.pageContext
     const { featuredImage } = post.frontmatter
-    const featuredImagePath = featuredImage && featuredImage.childImageSharp.fluid.src
+    const featuredImagePath =
+      featuredImage && featuredImage.childImageSharp.fluid.src
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -24,41 +26,53 @@ class BlogPostTemplate extends React.Component {
         />
         <article className="project__content">
           <header className="project__header">
-            <h3>
-              {post.frontmatter.title}
-            </h3>
+            <h3>{post.frontmatter.title}</h3>
           </header>
-          {post.frontmatter.featuredImage &&
+          {post.frontmatter.featuredImage && (
             <div className="project__imagecontainer">
-              <Img className="project__image" fluid={post.frontmatter.featuredImage.childImageSharp.fluid} />
-            </div>
-          }
-          {post.frontmatter.tags && (
-            <div className="projectlist__tagcontainer">
-              {
-                post.frontmatter.tags.map(tag => (
-                  <div className="projectlist__tag">{tag}</div>
-                ))
-              }
+              <Img
+                className="project__image"
+                fluid={post.frontmatter.featuredImage.childImageSharp.fluid}
+              />
             </div>
           )}
-          {(post.frontmatter.github || post.frontmatter.url) &&
-            <IconContext.Provider value={{ className: 'project__icon' }}>
+          {post.frontmatter.tags && (
+            <TagContainer>
+              {post.frontmatter.tags.map(tag => (
+                <Tag subject={tag} />
+              ))}
+            </TagContainer>
+          )}
+          {(post.frontmatter.github || post.frontmatter.url) && (
+            <IconContext.Provider value={{ className: "project__icon" }}>
               <div className="project__links">
-                {post.frontmatter.github &&
-              <a className="project__link" href={post.frontmatter.github} target="_blank" rel="noopener noreferrer">
-                <FaGithub /> <p>View source</p>
-              </a>
-                }
-                {post.frontmatter.url &&
-              <a className="project__link" href={post.frontmatter.url} target="_blank" rel="noopener noreferrer">
-                <FaLink /> <p>{post.frontmatter.url}</p>
-              </a>
-                }
+                {post.frontmatter.github && (
+                  <a
+                    className="project__link"
+                    href={post.frontmatter.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaGithub /> <p>View source</p>
+                  </a>
+                )}
+                {post.frontmatter.url && (
+                  <a
+                    className="project__link"
+                    href={post.frontmatter.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaLink /> <p>{post.frontmatter.url}</p>
+                  </a>
+                )}
               </div>
             </IconContext.Provider>
-          }
-          <section className="markdown" dangerouslySetInnerHTML={{ __html: post.html }} />
+          )}
+          <section
+            className="markdown"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
         </article>
 
         <nav className="post__navigation">
@@ -105,9 +119,9 @@ export const pageQuery = graphql`
         url
         tags
         featuredImage {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

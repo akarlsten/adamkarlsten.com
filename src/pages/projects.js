@@ -1,17 +1,17 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import React from "react"
+import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import { TagContainer, Tag } from "../components/tag"
 
 class ProjectsIndex extends React.Component {
-  render () {
+  render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
 
-  
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Projects" />
@@ -22,15 +22,22 @@ class ProjectsIndex extends React.Component {
             return (
               <article key={node.fields.slug} className="projectlist__post">
                 <header>
-                  <Link to={`/${node.fields.sourceInstanceName}${node.fields.slug}`}>
-                    {featuredImg &&
+                  <Link
+                    to={`/${node.fields.sourceInstanceName}${node.fields.slug}`}
+                  >
+                    {featuredImg && (
                       <div className="projectlist__imagecontainer">
-                        <Img className="projectlist__image" fluid={featuredImg.childImageSharp.fluid} />
+                        <Img
+                          className="projectlist__image"
+                          fluid={featuredImg.childImageSharp.fluid}
+                        />
                       </div>
-                    }
+                    )}
                   </Link>
                   <h4 className="projectlist__posttitle">
-                    <Link to={`/${node.fields.sourceInstanceName}${node.fields.slug}`}>
+                    <Link
+                      to={`/${node.fields.sourceInstanceName}${node.fields.slug}`}
+                    >
                       {title}
                     </Link>
                   </h4>
@@ -38,18 +45,16 @@ class ProjectsIndex extends React.Component {
                 <section className="projectlist__excerptcontainer">
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt
+                      __html: node.frontmatter.description || node.excerpt,
                     }}
                     className="projectlist__postexcerpt"
                   />
                   {node.frontmatter.tags && (
-                    <div className="projectlist__tagcontainer">
-                    {
-                      node.frontmatter.tags.map(tag => (
-                        <div className="projectlist__tag">{tag}</div>
-                      ))
-                    }
-                    </div>
+                    <TagContainer>
+                      {node.frontmatter.tags.map(tag => (
+                        <Tag subject={tag} />
+                      ))}
+                    </TagContainer>
                   )}
                 </section>
               </article>
@@ -71,9 +76,9 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: {fields: {sourceInstanceName: {eq: "projects"}}}
+      filter: { fields: { sourceInstanceName: { eq: "projects" } } }
       sort: { fields: [frontmatter___date], order: DESC }
-      ) {
+    ) {
       edges {
         node {
           excerpt
@@ -90,9 +95,9 @@ export const pageQuery = graphql`
               childImageSharp {
                 fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid
+                }
+              }
             }
-          }
-        }
           }
         }
       }

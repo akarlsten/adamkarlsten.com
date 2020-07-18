@@ -1,29 +1,29 @@
-import React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 const LatestPost = () => {
   const data = useStaticQuery(graphql`
     query LatestPostQuery {
       allMarkdownRemark(
-      filter: {fields: {sourceInstanceName: {eq: "blog"}}}
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 1
+        filter: { fields: { sourceInstanceName: { eq: "blog" } } }
+        sort: { fields: [frontmatter___date], order: DESC }
+        limit: 1
       ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-            sourceInstanceName
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
+        edges {
+          node {
+            excerpt
+            fields {
+              slug
+              sourceInstanceName
+            }
+            frontmatter {
+              date(formatString: "MMMM DD, YYYY")
+              title
+              description
+            }
           }
         }
       }
-    }
     }
   `)
 
@@ -44,7 +44,7 @@ const LatestPost = () => {
         <section>
           <p
             dangerouslySetInnerHTML={{
-              __html: post.frontmatter.description || post.excerpt
+              __html: post.frontmatter.description || post.excerpt,
             }}
             className="postlist__postexcerpt"
           />

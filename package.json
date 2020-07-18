@@ -38,8 +38,15 @@
     "typeface-inconsolata": "^0.0.72"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
-    "prettier": "^1.18.2"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.4.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-standard": "^4.0.1",
+    "gh-pages": "^2.1.1"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
@@ -55,9 +62,32 @@
     "build": "gatsby build",
     "deploy": "npm run build && node ./scripts/deploy-github",
     "dev": "gatsby develop -H 0.0.0.0",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run dev",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "plugin:react/recommended",
+      "standard"
+    ],
+    "rules": {
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off"
+    },
+    "globals": {
+      "React": "writable"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.test.js"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   }
 }
