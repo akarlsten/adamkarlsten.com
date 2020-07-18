@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import { Link } from 'gatsby'
 
 const Header = props => {
   const { title } = props
@@ -7,14 +7,14 @@ const Header = props => {
   return (
     <header className="mainheader">
       <h1 className="mainheader__title">
-        <Link to={"/"}>{title}</Link>
+        <Link to={'/'}>{title}</Link>
       </h1>
       <nav className="mainheader__menu">
         <ul>
           <li>
             <h3 className="mainheader__menuitem">
               <Link
-                to={"/projects"}
+                to={'/projects'}
                 activeClassName="mainheader__menuitem--active"
                 partiallyActive={true}
               >
@@ -25,7 +25,7 @@ const Header = props => {
           <li>
             <h3 className="mainheader__menuitem">
               <Link
-                to={"/blog"}
+                to={'/blog'}
                 activeClassName="mainheader__menuitem--active"
                 partiallyActive={true}
               >

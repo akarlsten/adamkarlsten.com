@@ -1,15 +1,15 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
-import { Disqus, CommentCount } from "gatsby-plugin-disqus"
-import { IconContext } from "react-icons"
-import { FaCommentDots } from "react-icons/fa"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
+import { IconContext } from 'react-icons'
+import { FaCommentDots } from 'react-icons/fa'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 
 class BlogPostTemplate extends React.Component {
-  render() {
+  render () {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
@@ -17,7 +17,7 @@ class BlogPostTemplate extends React.Component {
     const disqusConfig = {
       url: `${siteUrl}/${post.fields.sourceInstanceName}${post.fields.slug}`,
       identifier: post.id,
-      title: post.frontmatter.title,
+      title: post.frontmatter.title
     }
     const { featuredImage } = post.frontmatter
     const featuredImagePath =
@@ -36,9 +36,9 @@ class BlogPostTemplate extends React.Component {
             <div className="blog__subheader">
               <p className="blog__date">{post.frontmatter.date}</p>
               <div className="blog__commentcounter">
-                <IconContext.Provider value={{ className: "blog__icon" }}>
-                  <FaCommentDots />{" "}
-                  <CommentCount config={disqusConfig} placeholder={"..."} />
+                <IconContext.Provider value={{ className: 'blog__icon' }}>
+                  <FaCommentDots />{' '}
+                  <CommentCount config={disqusConfig} placeholder={'...'} />
                 </IconContext.Provider>
               </div>
             </div>

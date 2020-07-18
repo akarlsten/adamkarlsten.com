@@ -1,5 +1,5 @@
-import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import React from 'react'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
 const LatestPost = () => {
   const data = useStaticQuery(graphql`
@@ -44,7 +44,7 @@ const LatestPost = () => {
         <section>
           <p
             dangerouslySetInnerHTML={{
-              __html: post.frontmatter.description || post.excerpt,
+              __html: post.frontmatter.description || post.excerpt
             }}
             className="postlist__postexcerpt"
           />

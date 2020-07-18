@@ -1,27 +1,28 @@
 import React from 'react'
-import { FaReact, FaJsSquare } from 'react-icons/fa'
+import { FaReact, FaJsSquare, FaCog, FaNodeJs } from 'react-icons/fa'
 import { GrGatsbyjs } from 'react-icons/gr'
 
 export const TagContainer = ({ children }) => (
   <div className="tag__container">{children}</div>
 )
 
-export const Tag = ({ subject }) => {
-  let Icon
+const Icon = ({ subject }) => {
   switch (subject) {
     case 'React':
-      Icon = 'FaReact'
-      break
+      return <FaReact />
     case 'Javascript':
-      Icon = 'FaJsSquare'
-      break
+      return <FaJsSquare />
     case 'Gatsby':
-      Icon = 'GrGatsbyjs'
-      break
+      return <GrGatsbyjs />
+    case 'Node':
+      return <FaNodeJs />
+    case 'Express':
+      return <FaJsSquare />
     default:
-      Icon = null
-      break
+      return <FaCog />
   }
+}
 
-  return <div className="tag__item">{Icon && <Icon />} {subject}</div>
+export const Tag = ({ subject }) => {
+  return <div className="tag__item"><Icon subject={subject} /> {subject}</div>
 }

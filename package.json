@@ -88,6 +88,11 @@
           "jest": true
         }
       }
-    ]
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
   }
 }

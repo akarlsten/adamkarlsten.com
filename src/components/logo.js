@@ -1,18 +1,18 @@
-import { FontLoader, Vector3 } from "three"
-import React, { Suspense, useRef, useState, useMemo } from "react"
-import { Canvas, useLoader, useUpdate } from "react-three-fiber"
-import { OrbitControls } from "drei"
+import { FontLoader, Vector3 } from 'three'
+import React, { Suspense, useRef, useState, useMemo } from 'react'
+import { Canvas, useLoader, useUpdate } from 'react-three-fiber'
+import { OrbitControls } from 'drei'
 
-function Text({
+function Text ({
   children,
   texture,
-  vAlign = "center",
-  hAlign = "center",
+  vAlign = 'center',
+  hAlign = 'center',
   size = 1,
-  color = "#000000",
+  color = '#000000',
   ...props
 }) {
-  const font = useLoader(FontLoader, "/fredoka.blob")
+  const font = useLoader(FontLoader, '/fredoka.blob')
   const config = useMemo(
     () => ({
       font,
@@ -23,7 +23,7 @@ function Text({
       bevelThickness: 6,
       bevelSize: 2.5,
       bevelOffset: 0,
-      bevelSegments: 8,
+      bevelSegments: 8
     }),
     [font]
   )
@@ -33,9 +33,9 @@ function Text({
       self.geometry.computeBoundingBox()
       self.geometry.boundingBox.getSize(size)
       self.position.x =
-        hAlign === "center" ? -size.x / 2 : hAlign === "right" ? 0 : -size.x
+        hAlign === 'center' ? -size.x / 2 : hAlign === 'right' ? 0 : -size.x
       self.position.y =
-        vAlign === "center" ? -size.y / 2 : vAlign === "top" ? 0 : -size.y
+        vAlign === 'center' ? -size.y / 2 : vAlign === 'top' ? 0 : -size.y
     },
     [children]
   )
@@ -56,7 +56,7 @@ function Text({
         <textGeometry attach="geometry" args={[children, config]} />
         <meshStandardMaterial
           map={texture}
-          color={hovered ? "white" : "#ffcc59"}
+          color={hovered ? 'white' : '#ffcc59'}
           attach="material"
         />
       </mesh>
@@ -64,7 +64,7 @@ function Text({
   )
 }
 
-function Jumbo() {
+function Jumbo () {
   const ref = useRef()
   const cam = useRef()
   // useFrame(({ clock }) => ( ref.current.rotation.y = Math.sin(clock.getElapsedTime()) * 0.15))
@@ -74,9 +74,8 @@ function Jumbo() {
         <Text
           hAlign="center"
           position={[0, 3, 0]}
-          rotation={[0.1, 0.3, 0, "XYZ"]}
-          children="Hej!"
-        />
+          rotation={[0.1, 0.3, 0, 'XYZ']}
+        >Hej!</Text>
       </group>
     </>
   )

@@ -1,7 +1,7 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { IconContext } from "react-icons"
-import { FaTwitter, FaGithub, FaEnvelope } from "react-icons/fa"
+import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import { IconContext } from 'react-icons'
+import { FaTwitter, FaGithub, FaEnvelope } from 'react-icons/fa'
 
 const Social = () => {
   const data = useStaticQuery(graphql`
@@ -20,7 +20,7 @@ const Social = () => {
   const { social } = data.site.siteMetadata
 
   return (
-    <IconContext.Provider value={{ className: "social__icon" }}>
+    <IconContext.Provider value={{ className: 'social__icon' }}>
       <div className="social">
         <h3 className="social__header">Get in touch</h3>
         <div className="social__link social__link--mail">

@@ -1,11 +1,11 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 
 class BlogIndex extends React.Component {
-  render() {
+  render () {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
@@ -33,7 +33,7 @@ class BlogIndex extends React.Component {
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
+                      __html: node.frontmatter.description || node.excerpt
                     }}
                     className="postlist__postexcerpt"
                   />

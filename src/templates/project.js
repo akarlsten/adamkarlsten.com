@@ -1,15 +1,15 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
-import { IconContext } from "react-icons"
-import { FaGithub, FaLink } from "react-icons/fa"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import { IconContext } from 'react-icons'
+import { FaGithub, FaLink } from 'react-icons/fa'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { TagContainer, Tag } from "../components/tag"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import { TagContainer, Tag } from '../components/tag'
 
 class BlogPostTemplate extends React.Component {
-  render() {
+  render () {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next, subdirectory } = this.props.pageContext
@@ -44,7 +44,7 @@ class BlogPostTemplate extends React.Component {
             </TagContainer>
           )}
           {(post.frontmatter.github || post.frontmatter.url) && (
-            <IconContext.Provider value={{ className: "project__icon" }}>
+            <IconContext.Provider value={{ className: 'project__icon' }}>
               <div className="project__links">
                 {post.frontmatter.github && (
                   <a

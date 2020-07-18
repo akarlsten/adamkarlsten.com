@@ -1,13 +1,13 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { TagContainer, Tag } from "../components/tag"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import { TagContainer, Tag } from '../components/tag'
 
 class ProjectsIndex extends React.Component {
-  render() {
+  render () {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
@@ -45,7 +45,7 @@ class ProjectsIndex extends React.Component {
                 <section className="projectlist__excerptcontainer">
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
+                      __html: node.frontmatter.description || node.excerpt
                     }}
                     className="projectlist__postexcerpt"
                   />
