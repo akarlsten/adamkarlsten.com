@@ -1,6 +1,6 @@
 import { FontLoader, Vector3 } from 'three'
 import React, { Suspense, useRef, useState, useMemo } from 'react'
-import { Canvas, useLoader, useUpdate } from 'react-three-fiber'
+import { Canvas, useLoader, useUpdate, useFrame } from 'react-three-fiber'
 import { OrbitControls } from 'drei'
 
 function Text ({
@@ -64,13 +64,57 @@ function Text ({
   )
 }
 
+function Ray ({ direction = 'right', texture, ...props }) {
+  return (
+    <mesh {...props}>
+      <cylinderBufferGeometry attach="geometry" args={[direction === 'right' ? 0.5 : 1, direction === 'right' ? 1 : 0.5, 3, 16]} />
+      <meshStandardMaterial
+        map={texture}
+        color='#ffcc59'
+        attach="material"
+      />
+    </mesh>
+  )
+}
+
 function Jumbo () {
-  const ref = useRef()
-  const cam = useRef()
-  // useFrame(({ clock }) => ( ref.current.rotation.y = Math.sin(clock.getElapsedTime()) * 0.15))
+  const allObjects = useRef()
+  const leftRays = useRef()
+  const rightRays = useRef()
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  useFrame(({ clock }) => (allObjects.current.position.y = reduceMotion ? 0 : Math.sin(clock.getElapsedTime() * 2)))
+  useFrame(({ clock }) => (leftRays.current.position.x = reduceMotion ? 0 : Math.sin(clock.getElapsedTime() * 7)))
+  useFrame(({ clock }) => (rightRays.current.position.x = reduceMotion ? 0 : -Math.sin(clock.getElapsedTime() * 7)))
+
   return (
     <>
-      <group ref={ref}>
+      <group ref={allObjects}>
+        <group ref={leftRays}>
+          <Ray
+            direction={'left'}
+            position={[-12.5, 5, 5]}
+            rotation={[1.8, -0.5, 1.3, 'XYZ']} />
+          <Ray
+            direction={'left'}
+            position={[-14, 1, 5]}
+            rotation={[1.8, -0.1, 1.3, 'XYZ']} />
+          <Ray
+            direction={'left'}
+            position={[-12.5, -3, 4]}
+            rotation={[1.8, 0.5, 1.3, 'XYZ']} />
+        </group>
+        <group ref={rightRays}>
+          <Ray
+            position={[13.5, 5, -3]}
+            rotation={[1.8, 0.5, 1.3, 'XYZ']} />
+          <Ray
+            position={[15, 1, -4]}
+            rotation={[1.8, -0.1, 1.3, 'XYZ']} />
+          <Ray
+            position={[13.5, -3, -4]}
+            rotation={[1.8, -0.5, 1.3, 'XYZ']} />
+        </group>
         <Text
           hAlign="center"
           position={[0, 3, 0]}
@@ -83,7 +127,6 @@ function Jumbo () {
 
 const Logo = () => (
   <Canvas
-    invalidateFrameloop
     orthographic={true}
     pixelRatio={window.devicePixelRatio}
     camera={{ position: [0, 0, 40], fov: 90, zoom: 7 }}
