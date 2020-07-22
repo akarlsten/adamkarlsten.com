@@ -39,7 +39,7 @@ class BlogPostTemplate extends React.Component {
           {post.frontmatter.tags && (
             <TagContainer>
               {post.frontmatter.tags.map(tag => (
-                <Tag subject={tag} />
+                <Tag key={tag} subject={tag} />
               ))}
             </TagContainer>
           )}

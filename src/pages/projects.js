@@ -11,7 +11,6 @@ class ProjectsIndex extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
-
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Projects" />
@@ -52,7 +51,7 @@ class ProjectsIndex extends React.Component {
                   {node.frontmatter.tags && (
                     <TagContainer>
                       {node.frontmatter.tags.map(tag => (
-                        <Tag subject={tag} />
+                        <Tag key={tag} subject={tag} />
                       ))}
                     </TagContainer>
                   )}

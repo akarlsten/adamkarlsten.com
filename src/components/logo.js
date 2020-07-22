@@ -67,7 +67,7 @@ function Text ({
 function Ray ({ direction = 'right', texture, ...props }) {
   return (
     <mesh {...props}>
-      <cylinderBufferGeometry attach="geometry" args={[direction === 'right' ? 0.5 : 1, direction === 'right' ? 1 : 0.5, 3, 16]} />
+      <cylinderBufferGeometry attach="geometry" args={[direction === 'right' ? 0 : 1, direction === 'right' ? 1 : 0, 3, 16]} />
       <meshStandardMaterial
         map={texture}
         color='#ffcc59'

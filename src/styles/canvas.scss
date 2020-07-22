@@ -11,4 +11,7 @@ canvas {
   width: 15.8rem;
   height: 7rem;
   position: relative;
+  @include phone {
+    margin-left: -1.8rem;
+  }
 }

@@ -1,13 +1,14 @@
 ---
 title: This page!
-date: "2019-11-19"
+date: '2019-11-19'
 featuredImage: adamblog.png
-tags: ["Gatsby", "React", "Javascript"]
+github: 'https://github.com/akarlsten/adamkarlsten.com'
+tags: ['Gatsby', 'React', 'Javascript']
 ---
 
-This portfolio website and blog was build entirely with Gatsby, originally as part of an exam assignment for the course 1DV022 Client-based web programming at Linnaeus University.
+This portfolio website and blog was built entirely with Gatsby, originally as part of an exam assignment for the course 1DV022 Client-based web programming at Linnaeus University.
 
-We had a choice of either using Docker or Gatsby, and as I've used Gatsby before and am familiar with React it was an easy choice!
+We had a choice of either using Jekyll or Gatsby, and as I've used Gatsby before and am familiar with React it was an easy choice!
 
 I started out with the [gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog) template and heavily modified it:
 
