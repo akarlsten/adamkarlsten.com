@@ -31,4 +31,4 @@ If I had more time I would focus on the following:
 - Rewriting a lot of the access control logic on the back-end -
   During initial development there was no easy way to do unrelated database queries as part of other operations in Keystone, i.e. if a user sends a `CreateThread` mutation, we want to query the database wether that user is banned from the forum (or site) before allowing it to go through. I initially used a work-around to solve the problem, but it had some undesirable limitations if I wanted to add certain features to the application in the future.
 
-  Near the end of the initial development period Keystone released a new version with features that would allow me to solve my problems in a much simpler and easier way, and I would like to implement these.
+  Near the end of the initial development period Keystone released a new version with features that would allow me to solve these problems in a much simpler and easier way, and I would like to implement these.

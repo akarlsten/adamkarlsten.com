@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "author": "Adam Karlsten",
   "dependencies": {
+    "@loadable/component": "^5.13.1",
     "drei": "^0.0.60",
     "gatsby": "^2.17.6",
     "gatsby-image": "^2.2.30",
