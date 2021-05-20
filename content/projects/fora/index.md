@@ -8,6 +8,8 @@ url: 'https://fora.fun'
 tags: ['NextJS', 'React', 'GraphQL', 'Apollo', 'KeystoneJS', 'Javascript']
 ---
 
+> More screenshots are available at the bottom!
+
 A forum platform in the vein of Reddit with user-created communities. Instead of the up/downvote system for ranking threads and comments, it instead uses a more classic forum approach with everything sorted chronologically.
 
 Users create forums about whichever topics they want, which they become owners of. They can then appoint moderators, who together with the owner have access to moderation tools (bans, locking threads, etc.) for the forum.
@@ -32,3 +34,15 @@ If I had more time I would focus on the following:
   During initial development there was no easy way to do unrelated database queries as part of other operations in Keystone, i.e. if a user sends a `CreateThread` mutation, we want to query the database wether that user is banned from the forum (or site) before allowing it to go through. I initially used a work-around to solve the problem, but it had some undesirable limitations if I wanted to add certain features to the application in the future.
 
   Near the end of the initial development period Keystone released a new version with features that would allow me to solve these problems in a much simpler and easier way, and I would like to implement these.
+
+### Screenshots
+
+Surfing different parts of the application while logged in as an admin.
+
+![](fora2.png)
+---
+![](fora3.png)
+---
+![](fora4.png)
+---
+![](fora5.png)
