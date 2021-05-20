@@ -1,9 +1,9 @@
 import { FontLoader, Vector3 } from 'three'
-import React, { Suspense, useRef, useState, useMemo } from 'react'
-import { Canvas, useLoader, useUpdate, useFrame } from 'react-three-fiber'
-import { OrbitControls } from 'drei'
+import React, { Suspense, useRef, useState, useMemo, forwardRef, useCallback } from 'react'
+import { Canvas, useLoader, useFrame } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
 
-function Text ({
+const Text = ({
   children,
   texture,
   vAlign = 'center',
@@ -11,7 +11,9 @@ function Text ({
   size = 1,
   color = '#000000',
   ...props
-}) {
+}) => {
+  const [hovered, setHover] = useState(false)
+
   const font = useLoader(FontLoader, '/fredoka.blob')
   const config = useMemo(
     () => ({
@@ -25,36 +27,39 @@ function Text ({
       bevelOffset: 0,
       bevelSegments: 8
     }),
-    [font]
-  )
-  const mesh = useUpdate(
-    self => {
-      const size = new Vector3()
-      self.geometry.computeBoundingBox()
-      self.geometry.boundingBox.getSize(size)
-      self.position.x =
-        hAlign === 'center' ? -size.x / 2 : hAlign === 'right' ? 0 : -size.x
-      self.position.y =
-        vAlign === 'center' ? -size.y / 2 : vAlign === 'top' ? 0 : -size.y
-    },
-    [children]
+    [font, hovered]
   )
 
-  const [hovered, setHover] = useState(false)
+
+  const didUpdate = useCallback((self) => {
+    const size = new Vector3()
+    self.geometry.computeBoundingBox()
+    self.geometry.boundingBox.getSize(size)
+    self.position.x =
+      hAlign === 'center' ? -size.x / 2 : hAlign === 'right' ? 0 : -size.x
+    self.position.y =
+      vAlign === 'center' ? -size.y / 2 : vAlign === 'top' ? 0 : -size.y
+  }, [self])
 
   return (
     <group {...props} scale={[0.1 * size, 0.1 * size, 0.1]}>
       <mesh
-        ref={mesh}
+        onUpdate={didUpdate}
         onPointerOver={e => {
-          setHover(true)
+          if (!hovered) {
+            setHover(true)
+          }
         }}
         onPointerOut={e => {
-          setHover(false)
+          if (hovered) {
+            setHover(false)
+          }
         }}
       >
         <textGeometry attach="geometry" args={[children, config]} />
-        <meshStandardMaterial
+        <meshPhongMaterial
+          specular={0xFFFFFF}
+          shininess={60}
           map={texture}
           color={hovered ? 'white' : '#ffcc59'}
           attach="material"
@@ -64,7 +69,7 @@ function Text ({
   )
 }
 
-function Ray ({ direction = 'right', texture, ...props }) {
+function Ray({ direction = 'right', texture, ...props }) {
   return (
     <mesh {...props}>
       <cylinderBufferGeometry attach="geometry" args={[direction === 'right' ? 0 : 1, direction === 'right' ? 1 : 0, 3, 16]} />
@@ -77,10 +82,11 @@ function Ray ({ direction = 'right', texture, ...props }) {
   )
 }
 
-function Jumbo () {
+function Jumbo() {
   const allObjects = useRef()
   const leftRays = useRef()
   const rightRays = useRef()
+
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   useFrame(({ clock }) => (allObjects.current.position.y = reduceMotion ? 0 : Math.sin(clock.getElapsedTime() * 2)))
@@ -116,6 +122,7 @@ function Jumbo () {
             rotation={[1.8, -0.5, 1.3, 'XYZ']} />
         </group>
         <Text
+          bevelSize={8}
           hAlign="center"
           position={[0, 3, 0]}
           rotation={[0.1, 0.3, 0, 'XYZ']}
@@ -127,12 +134,14 @@ function Jumbo () {
 
 const Logo = () => (
   <Canvas
+    anti
+    flat={true}
     orthographic={true}
-    pixelRatio={window.devicePixelRatio}
+    dpr={window.devicePixelRatio}
     camera={{ position: [0, 0, 40], fov: 90, zoom: 7 }}
   >
-    <ambientLight intensity={0.3} />
-    <pointLight position={[40, 40, 40]} />
+    <ambientLight intensity={0.06} />
+    <pointLight intensity={1.25} position={[40, 40, 40]} />
     <Suspense fallback={null}>
       <Jumbo />
     </Suspense>
