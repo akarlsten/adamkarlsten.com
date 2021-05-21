@@ -10,6 +10,13 @@
 /*********************************************************
 * General
 */
+
+.gatsby-highlight {
+  @include phone {
+    display: flex;
+    justify-content: center;
+  }
+}
 pre[class*="language-"],
 code[class*="language-"] {
   color: #eff0eb;
@@ -34,6 +41,8 @@ code[class*="language-"] {
 
   @include phone {
     font-size: 1rem;
+    width: 82vw;
+    overflow: 'scroll';
   }
 }
 pre[class*="language-"]::selection,
