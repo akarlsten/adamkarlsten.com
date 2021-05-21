@@ -8,6 +8,8 @@ url: 'https://lunch.adamkarlsten.com'
 tags: ['Gatsby', 'React', 'Express', 'Node', 'Web Scraping', 'Javascript']
 ---
 
+> Note! Since I have not worked at Gleerups for quite a few years now while studying, I have not kept the web scraper updated with changing restaurants and restaurant website layouts. I make no guarantees that any of the info is still accurate. 😊
+
 A Gatsby frontend for a Node REST API that scrapes local restaurant menus near my old job every day. Also has some fun stuff like geolocation; to see how far away each restaurant is and to generate dynamic directions via Google Maps.
 
 It started out as an exercise in React and Gatsby, especially the new Hook and Context APIs. It turned out to be pretty useful and popular with my coworkers so I kept working on it to add some extra features.
