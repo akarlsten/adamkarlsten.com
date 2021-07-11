@@ -48,7 +48,7 @@ const Bio = () => {
           <span role="img" aria-label="Sweden">
             🇸🇪
           </span>
-          . I&apos;m currently studying web development at Linnaeus University.
+          !
         </p>
         <p>
           Have a look at some of the <Link to={'/projects'}>projects</Link>{' '}
