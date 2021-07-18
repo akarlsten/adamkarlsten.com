@@ -32,7 +32,7 @@ const LatestPost = () => {
 
   return (
     <div className="latestpost">
-      <h3>Latest post</h3>
+      <h3>Latest blog</h3>
       <article key={post.fields.slug} className="postlist__post">
         <header>
           <h4 className="postlist__posttitle">

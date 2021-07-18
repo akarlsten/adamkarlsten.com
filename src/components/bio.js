@@ -7,41 +7,32 @@
 
 import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { StaticImage } from "gatsby-plugin-image";
 import loadable from '@loadable/component'
 
-const Logo = loadable(() => import('./logo'))
+const Greeting = loadable(() => import('./greeting'))
 
 const Bio = () => {
-  const data = useStaticQuery(graphql`
-    query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-        childImageSharp {
-          fluid(maxWidth: 500) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      site {
-        siteMetadata {
-          author
-        }
-      }
+  const data = useStaticQuery(graphql`query BioQuery {
+  site {
+    siteMetadata {
+      author
     }
-  `)
+  }
+}
+`)
 
   const { author } = data.site.siteMetadata
 
   return (
     <div className="bio">
-      <Image
+      <StaticImage
+        src="../../content/assets/profile-pic.jpg"
         className="bio__avatar"
-        fluid={data.avatar.childImageSharp.fluid}
-        alt={author}
-      />
+        alt={author} />
       <div className="bio__text">
         <div className="bio__logo">
-          <Logo />
+          <Greeting />
         </div>
         <p>
           I&apos;m <strong>{author}</strong>, a web developer from Malmö,{' '}
@@ -56,7 +47,7 @@ const Bio = () => {
         </p>
       </div>
     </div>
-  )
+  );
 }
 
 export default Bio

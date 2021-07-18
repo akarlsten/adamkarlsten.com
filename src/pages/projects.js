@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -26,10 +26,9 @@ class ProjectsIndex extends React.Component {
                   >
                     {featuredImg && (
                       <div className="projectlist__imagecontainer">
-                        <Img
-                          className="projectlist__image"
-                          fluid={featuredImg.childImageSharp.fluid}
-                        />
+                        <GatsbyImage
+                          image={featuredImg.childImageSharp.gatsbyImageData}
+                          className="projectlist__image" />
                       </div>
                     )}
                   </Link>
@@ -57,49 +56,46 @@ class ProjectsIndex extends React.Component {
                   )}
                 </section>
               </article>
-            )
+            );
           })}
         </section>
       </Layout>
-    )
+    );
   }
 }
 
 export default ProjectsIndex
 
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
+export const pageQuery = graphql`{
+  site {
+    siteMetadata {
+      title
     }
-    allMarkdownRemark(
-      filter: { fields: { sourceInstanceName: { eq: "projects" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-            sourceInstanceName
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            tags
-            featuredImage {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+  }
+  allMarkdownRemark(
+    filter: {fields: {sourceInstanceName: {eq: "projects"}}}
+    sort: {fields: [frontmatter___date], order: DESC}
+  ) {
+    edges {
+      node {
+        excerpt
+        fields {
+          slug
+          sourceInstanceName
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          description
+          tags
+          featuredImage {
+            childImageSharp {
+              gatsbyImageData(width: 800, layout: CONSTRAINED)
             }
           }
         }
       }
     }
   }
+}
 `

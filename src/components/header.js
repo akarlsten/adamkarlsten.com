@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+import Logo from './logo'
+
 const Header = props => {
-  const { title } = props
 
   return (
     <header className="mainheader">
       <h1 className="mainheader__title">
-        <Link to={'/'}>{title}</Link>
+        <Link to={'/'}>
+          <Logo />
+        </Link>
       </h1>
       <nav className="mainheader__menu">
         <ul>

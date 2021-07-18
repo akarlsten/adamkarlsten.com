@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage, getSrc } from "gatsby-plugin-image";
 import { IconContext } from 'react-icons'
 import { FaGithub, FaLink } from 'react-icons/fa'
 
@@ -9,13 +9,12 @@ import SEO from '../components/seo'
 import { TagContainer, Tag } from '../components/tag'
 
 class BlogPostTemplate extends React.Component {
-  render () {
+  render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next, subdirectory } = this.props.pageContext
     const { featuredImage } = post.frontmatter
-    const featuredImagePath =
-      featuredImage && featuredImage.childImageSharp.fluid.src
+    const featuredImagePath = getSrc(featuredImage)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -30,10 +29,13 @@ class BlogPostTemplate extends React.Component {
           </header>
           {post.frontmatter.featuredImage && (
             <div className="project__imagecontainer">
-              <Img
-                className="project__image"
-                fluid={post.frontmatter.featuredImage.childImageSharp.fluid}
-              />
+              <a href={featuredImagePath} target="_blank" rel="noopener">
+                <GatsbyImage
+                  quality="80"
+                  alt={post.frontmatter.title}
+                  image={post.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
+                  className="project__image" />
+              </a>
             </div>
           )}
           {post.frontmatter.tags && (
@@ -94,38 +96,35 @@ class BlogPostTemplate extends React.Component {
           </ul>
         </nav>
       </Layout>
-    )
+    );
   }
 }
 
 export default BlogPostTemplate
 
-export const pageQuery = graphql`
-  query ProjectBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
+export const pageQuery = graphql`query ProjectBySlug($slug: String!) {
+  site {
+    siteMetadata {
+      title
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-        github
-        url
-        tags
-        featuredImage {
-          childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+  }
+  markdownRemark(fields: {slug: {eq: $slug}}) {
+    id
+    excerpt(pruneLength: 160)
+    html
+    frontmatter {
+      title
+      date(formatString: "MMMM DD, YYYY")
+      description
+      github
+      url
+      tags
+      featuredImage {
+        childImageSharp {
+          gatsbyImageData(width: 800, layout: CONSTRAINED)
         }
       }
     }
   }
+}
 `
