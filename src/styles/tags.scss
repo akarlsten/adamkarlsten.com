@@ -39,3 +39,15 @@
     margin-right: 0.5rem;
   }
 }
+
+.tag__item-React {
+  color: $tagPurpFg;
+  border-color: $tagPurpFg;
+  background-color: $tagPurpBg;
+}
+
+.tag__item-ThreeJS {
+  color: $tagGreenFg;
+  border-color: $tagGreenFg;
+  background-color: $tagGreenBg;
+}

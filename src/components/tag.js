@@ -42,11 +42,24 @@ const Icon = ({ subject }) => {
           <path d="M290.136 47H407.58c17.83 0 24.297 1.857 30.815 5.343 6.519 3.486 11.634 8.602 15.12 15.12 3.487 6.519 5.343 12.984 5.343 30.815v117.444c0 17.83-1.856 24.296-5.343 30.815-3.486 6.518-8.601 11.634-15.12 15.12-6.518 3.486-12.984 5.343-30.815 5.343H290.136c-17.83 0-24.296-1.857-30.815-5.343-6.518-3.486-11.634-8.602-15.12-15.12-3.486-6.519-5.343-12.984-5.343-30.815V98.278c0-17.83 1.857-24.296 5.343-30.815 3.486-6.518 8.602-11.634 15.12-15.12C265.84 48.857 272.305 47 290.136 47zm11.762 56.76V218h25.12v-36.8l14.4-14.56 34.4 51.36h31.52l-48.96-69.12 44.64-45.12h-31.36l-44.64 47.36v-47.36h-25.12z" transform="translate(-238.858 -47)" fillRule="evenodd" />
         </svg>
       )
+    case 'ThreeJS':
+      return (
+        <svg fill="currentColor" width="1em" height="1em" stroke-linecap="square" stroke-miterlimit="10" version="1.1" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(8.964 4.2527)" fill-rule="evenodd" stroke="#000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="4">
+            <path d="m63.02 200.61-43.213-174.94 173.23 49.874z" />
+            <path d="m106.39 50.612 21.591 87.496-86.567-24.945z" />
+            <path d="m84.91 125.03-10.724-43.465 43.008 12.346z" />
+            <path d="m63.458 38.153 10.724 43.465-43.008-12.346z" />
+            <path d="m149.47 62.93 10.724 43.465-43.008-12.346z" />
+            <path d="m84.915 125.06 10.724 43.465-43.008-12.346z" />
+          </g>
+        </svg>
+      )
     default:
       return <FaCog />
   }
 }
 
 export const Tag = ({ subject }) => {
-  return <div className="tag__item"><Icon subject={subject} /> {subject}</div>
+  return <div className={`tag__item tag__item-${subject}`}><Icon subject={subject} /> {subject}</div>
 }

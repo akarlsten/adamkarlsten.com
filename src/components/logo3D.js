@@ -131,12 +131,16 @@ const Word = ({ hovered, secretMode }) => {
     } else {
       letterRefs.forEach((letter, index) => {
 
+        // Return to starting positions
+
         if (letter.position.y > 0) {
           letter.position.y -= delta * 10
         } else if (letter.position.y < 0) {
           letter.position.y += delta * 10
         }
 
+
+        // secret mode rotations
         if (letter.rotation.x > 0) {
           if (letter.rotation.x - delta * 10 < 0) {
             letter.rotation.x = 0
