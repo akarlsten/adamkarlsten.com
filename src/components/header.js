@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'gatsby'
 
 import Logo from './logo'
 
 const Header = props => {
+  const [secretMode, setSecretMode] = useState(false)
 
   return (
     <header className="mainheader">
       <h1 className="mainheader__title">
         <Link to={'/'}>
-          <Logo />
+          <Logo secretMode={secretMode} />
         </Link>
+        <div onClick={() => setSecretMode(!secretMode)} className="mainheader__title-secret">{secretMode ? '🤪' : '🤨'}</div>
       </h1>
       <nav className="mainheader__menu">
         <ul>

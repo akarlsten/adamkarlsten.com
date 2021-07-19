@@ -7,7 +7,7 @@ import SEO from '../components/seo'
 import { TagContainer, Tag } from '../components/tag'
 
 class ProjectsIndex extends React.Component {
-  render () {
+  render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
@@ -27,6 +27,7 @@ class ProjectsIndex extends React.Component {
                     {featuredImg && (
                       <div className="projectlist__imagecontainer">
                         <GatsbyImage
+                          alt={node.frontmatter.title}
                           image={featuredImg.childImageSharp.gatsbyImageData}
                           className="projectlist__image" />
                       </div>

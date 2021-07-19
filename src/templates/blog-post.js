@@ -45,6 +45,7 @@ class BlogPostTemplate extends React.Component {
           {post.frontmatter.featuredImage && (
             <div className="blog__imagecontainer">
               <GatsbyImage
+                alt={post.frontmatter.title}
                 loading="eager"
                 image={post.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
                 className="blog__image" />

@@ -1,5 +1,5 @@
-import { FontLoader, Vector3, Color } from 'three'
-import React, { Suspense, useRef, useState, useMemo, forwardRef, useCallback } from 'react'
+import { FontLoader, Vector3 } from 'three'
+import React, { Suspense, useRef, useState, useMemo, useCallback } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 
@@ -10,12 +10,10 @@ const Text = ({
   hAlign = 'center',
   ...props
 }) => {
-  const [hovered, setHover] = useState(false)
-  const [color] = useState(() => new Color())
 
   const textRef = useRef()
 
-  const font = useLoader(FontLoader, '/fredoka.blob')
+  const font = useLoader(FontLoader, '/fredoka_hej.json')
   const config = useMemo(
     () => ({
       font,
@@ -42,36 +40,18 @@ const Text = ({
       vAlign === 'center' ? -size.y / 2 : vAlign === 'top' ? 0 : -size.y
   }, [self])
 
-  useFrame((state, delta) => {
-    // if (hovered) {
-    //   textRef.current.material.color = color.set(0xFFFFFF)
-    // } else {
-    //   textRef.current.material.color = color.set(0xFFCC59)
-    // }
-  })
-
   return (
     <group {...props} scale={[0.1, 0.1, 0.1]}>
       <mesh
         ref={textRef}
         onUpdate={didUpdate}
-        onPointerOver={e => {
-          if (!hovered) {
-            setHover(true)
-          }
-        }}
-        onPointerOut={e => {
-          if (hovered) {
-            setHover(false)
-          }
-        }}
       >
         <textGeometry attach="geometry" args={[children, config]} />
         <meshPhongMaterial
           specular={0xFFFFFF}
           shininess={60}
           map={texture}
-          color={hovered ? 'white' : '#ffcc59'}
+          color='#ffcc59'
           attach="material"
         />
       </mesh>
