@@ -77,7 +77,12 @@ const Word = ({ hovered, secretMode }) => {
     } else if (width > 38) {
       scaleFactor.current = 0.5
     } else {
-      scaleFactor.current = 0.28
+      scaleFactor.current = 0.3
+    }
+
+    if (width < 50) {
+      group.current.position.x = -1.5
+      group.current.position.y = -1
     }
   }, [viewport])
 
