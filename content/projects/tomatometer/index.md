@@ -5,7 +5,7 @@ featuredImage: tomato2.png
 description: 'A site to keep track of how the tomato plant in my windowsill is doing. A project combining a LoPy4 microcontroller (with a few sensors), a REST API that saves sensor data as well as small React application to view it.'
 github: 'https://github.com/akarlsten/Tomato-Meter'
 url: 'https://tomato.adamkarlsten.com'
-tags: ['IoT', 'NextJS', 'React', 'Express', 'MongoDB', 'Javascript']
+tags: ['NextJS', 'React', 'IoT', 'Express', 'MongoDB', 'Javascript']
 ---
 
 > Note! The tomato plant has since been replanted outside, and the soil moisture sensor corroded into uselessness. Hence the actual website is now pretty much defunct.

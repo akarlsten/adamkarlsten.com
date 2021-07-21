@@ -4,17 +4,40 @@ $black: #141622;
 $yellow: #ffcc59;
 
 // tag colors
+$tagGreyFg: #D1D5DB;
+$tagGreyBg: #111827;
+
 $tagRedFg: #FCA5A5;
 $tagRedBg: #7F1D1D;
 
+$tagYellowFg: #FCD34D;
+$tagYellowBg: #78350F;
+
 $tagGreenFg: #6EE7B7;
-$tagGreenBg: #064E3B;
+$tagGreenBg: #043125;
 
 $tagPurpFg: #C4B5FD;
 $tagPurpBg: #4C1D95;
 
 $tagIndiFg: #A5B4FC;
 $tagIndiBg: #312E81;
+
+$tagPinkFg: #F9A8D4;
+$tagPinkBg: #831843;
+
+$tagReactFg: #61dafb;
+$tagReactBg: #12272c;
+// $tagReactBg: #20232a;
+
+$tagGraphQlFg: #e10098;
+$tagGraphQlBg: #29001c;
+// $tagGraphQlBg: #171e26;
+
+$tagGatsbyFg: rgb(112, 38, 185);
+$tagGatsbyBg: white;
+
+$tagNextFg: black;
+$tagNextBg: white;
 
 
 // Font sizing (everything else scales off these)

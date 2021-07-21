@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaReact, FaJsSquare, FaCog, FaNodeJs } from 'react-icons/fa'
 import { GrGatsbyjs, GrGraphQl } from 'react-icons/gr'
+import { SiZapier, SiMongodb } from 'react-icons/si'
 
 export const TagContainer = ({ children }) => {
   return (
@@ -24,6 +25,10 @@ const Icon = ({ subject }) => {
       return <FaJsSquare />
     case 'GraphQL':
       return <GrGraphQl />
+    case 'Zapier':
+      return <SiZapier />
+    case 'MongoDB':
+      return <SiMongodb />
     case 'NextJS':
       return (
         <svg fill="currentColor" height="1em" width="1em" viewBox=".5 -.2 1023 1024.1" xmlns="http://www.w3.org/2000/svg">

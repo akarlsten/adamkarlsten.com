@@ -41,13 +41,36 @@
 }
 
 .tag__item-React {
-  color: $tagPurpFg;
-  border-color: $tagPurpFg;
-  background-color: $tagPurpBg;
+  color: $tagReactFg;
+  border-color: $tagReactFg;
+  background-color: $tagReactBg;
 }
 
 .tag__item-ThreeJS {
   color: $tagGreenFg;
   border-color: $tagGreenFg;
   background-color: $tagGreenBg;
+}
+
+.tag__item-GraphQL {
+  color: $tagGraphQlFg;
+  border-color: $tagGraphQlFg;
+  background-color: $tagGraphQlBg;
+}
+
+.tag__item-Gatsby {
+  color: $tagGatsbyFg;
+  border-color: $tagGatsbyFg;
+  background-color: $tagGatsbyBg;
+}
+
+.tag__item-NextJS {
+  color: $tagNextFg;
+  border-color: $black;
+  background-color: $tagNextBg;
+}
+
+.tag__item-Zapier {
+  color: #ff4a00;
+  border-color: #ff4a00;
 }

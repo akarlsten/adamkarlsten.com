@@ -112,6 +112,26 @@ const Word = ({ hovered, secretMode }) => {
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+  const approachStartingValue = (property, increment, start = 0) => {
+    if (property > start) {
+      if (property - increment < start) {
+        property = start
+      } else {
+        property -= increment
+      }
+    } else if (property < start) {
+      if (property + increment > start) {
+        property = start
+      } else {
+        property += increment
+      }
+    }
+
+    return property
+  }
+
+  const sphereRef = useRef()
+
   useFrame((state, delta) => {
     const now = Date.now()
     const timeElapsed = (now - timer.current) / 1000
@@ -133,55 +153,11 @@ const Word = ({ hovered, secretMode }) => {
 
         // Return to starting positions
 
-        if (letter.position.y > 0) {
-          letter.position.y -= delta * 10
-        } else if (letter.position.y < 0) {
-          letter.position.y += delta * 10
-        }
-
-
+        letter.position.y = approachStartingValue(letter.position.y, delta * 15, 0)
         // secret mode rotations
-        if (letter.rotation.x > 0) {
-          if (letter.rotation.x - delta * 10 < 0) {
-            letter.rotation.x = 0
-          } else {
-            letter.rotation.x -= delta * 10
-          }
-        } else if (letter.rotation.x < 0) {
-          if (letter.rotation.x + delta * 10 > 0) {
-            letter.rotation.x = 0
-          } else {
-            letter.rotation.x += delta * 10
-          }
-        }
-
-        if (letter.rotation.y > 0) {
-          if (letter.rotation.y - delta * 10 < 0) {
-            letter.rotation.y = 0
-          } else {
-            letter.rotation.y -= delta * 10
-          }
-        } else if (letter.rotation.y < 0) {
-          if (letter.rotation.y + delta * 10 > 0) {
-            letter.rotation.y = 0
-          } else {
-            letter.rotation.y += delta * 10
-          }
-        }
-
-        if (letter.rotation.z > 0) {
-          if (letter.rotation.z - delta * 10 < 0) {
-            letter.rotation.z = 0
-          } else {
-            letter.rotation.z -= delta * 10
-          }
-        } else if (letter.rotation.z < 0) {
-          if (letter.rotation.z + delta * 10 > 0) {
-            letter.rotation.z = 0
-          } else {
-            letter.rotation.z += delta * 10
-          }
-        }
+        letter.rotation.x = approachStartingValue(letter.rotation.x, delta * 5, 0)
+        letter.rotation.y = approachStartingValue(letter.rotation.y, delta * 5, 0)
+        letter.rotation.z = approachStartingValue(letter.rotation.z, delta * 5, 0)
 
       })
     }
