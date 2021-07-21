@@ -4,12 +4,11 @@ import Header from './header'
 
 import '../styles/styles.scss'
 
-const Layout = props => {
-  const { title, children } = props
+const Layout = ({ children }) => {
 
   return (
     <div className="content">
-      <Header title={title} />
+      <Header />
       <main>{children}</main>
     </div>
   )

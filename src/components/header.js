@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 
 import Logo from './logo'
 
-const Header = props => {
+const Header = () => {
   const [secretMode, setSecretMode] = useState(false)
 
   return (
@@ -12,7 +12,7 @@ const Header = props => {
         <Link to={'/'}>
           <Logo secretMode={secretMode} />
         </Link>
-        <div onClick={() => setSecretMode(!secretMode)} className="mainheader__title-secret">{secretMode ? '🤪' : '🤨'}</div>
+        <button onClick={() => setSecretMode(!secretMode)} className="mainheader__title-secret">{secretMode ? '🤪' : '🤨'}</button>
       </h1>
       <nav className="mainheader__menu">
         <ul>

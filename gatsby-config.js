@@ -5,7 +5,8 @@ module.exports = {
     description: 'Portfolio site for Adam Karlsten',
     siteUrl: 'https://akarlsten.github.io/',
     social: {
-      github: 'akarlsten'
+      github: 'akarlsten',
+      linkedin: 'adam-karlsten-171b62116'
     }
   },
   plugins: [
@@ -57,6 +58,12 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sitemap',
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve('./src/components/layout.js'),
+      },
+    },
     'gatsby-plugin-catch-links',
     {
       resolve: 'gatsby-plugin-google-analytics',

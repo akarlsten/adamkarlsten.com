@@ -12,7 +12,7 @@ class ProjectsIndex extends React.Component {
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <>
         <SEO title="Projects" />
         <section className="projectlist">
           {posts.map(({ node }) => {
@@ -60,7 +60,7 @@ class ProjectsIndex extends React.Component {
             );
           })}
         </section>
-      </Layout>
+      </>
     );
   }
 }

@@ -11,7 +11,7 @@ class BlogIndex extends React.Component {
     const posts = data.allMarkdownRemark.edges
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <>
         <SEO title="Blog" />
         <p>Musings, tutorials and other writings..</p>
         <section className="postlist">
@@ -43,7 +43,7 @@ class BlogIndex extends React.Component {
             )
           })}
         </section>
-      </Layout>
+      </>
     )
   }
 }

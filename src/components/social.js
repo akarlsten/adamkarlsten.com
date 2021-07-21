@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { IconContext } from 'react-icons'
-import { FaGithub, FaEnvelope } from 'react-icons/fa'
+import { FaGithub, FaEnvelope, FaLinkedin } from 'react-icons/fa'
 
 const Social = () => {
   const data = useStaticQuery(graphql`
@@ -32,6 +32,14 @@ const Social = () => {
           rel="noopener noreferrer"
         >
           <p>{social.github}</p> <FaGithub />
+        </a>
+        <a
+          className="social__link"
+          href={`https://www.linkedin.com/in/${social.linkedin}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <p>Linkedin</p> <FaLinkedin />
         </a>
       </div>
     </IconContext.Provider>
