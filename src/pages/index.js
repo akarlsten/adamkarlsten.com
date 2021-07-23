@@ -5,6 +5,8 @@ import Bio from '../components/bio'
 import LatestPost from '../components/latestpost'
 import Social from '../components/social'
 import SEO from '../components/seo'
+import { BigSquiggle } from '../components/squiggles'
+
 class Index extends React.Component {
   render() {
     const { data } = this.props
@@ -16,6 +18,7 @@ class Index extends React.Component {
         <Bio />
         <LatestPost />
         <Social />
+        <BigSquiggle className="bio-squiggle" />
       </>
     )
   }

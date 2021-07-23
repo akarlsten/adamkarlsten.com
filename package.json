@@ -8,7 +8,6 @@
     "@loadable/component": "^5.15.0",
     "@react-three/drei": "^5.1.2",
     "@react-three/fiber": "^6.1.5",
-    "drei": "^2.2.21",
     "gatsby": "^3.5.1",
     "gatsby-image": "^3.5.0",
     "gatsby-plugin-catch-links": "^3.5.0",

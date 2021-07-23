@@ -7,6 +7,8 @@ import { FaGithub, FaLink } from 'react-icons/fa'
 import SEO from '../components/seo'
 import { TagContainer, Tag } from '../components/tag'
 
+import { BigSquiggle } from '../components/squiggles'
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
@@ -75,7 +77,7 @@ class BlogPostTemplate extends React.Component {
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
         </article>
-
+        <BigSquiggle className="post__navigation-squiggle" />
         <nav className="post__navigation">
           <ul>
             <li>

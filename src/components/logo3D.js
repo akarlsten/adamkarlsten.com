@@ -131,7 +131,6 @@ const Word = ({ hovered, secretMode }) => {
     return property
   }
 
-  const sphereRef = useRef()
 
   useFrame((state, delta) => {
     const now = Date.now()
@@ -151,10 +150,9 @@ const Word = ({ hovered, secretMode }) => {
       })
     } else {
       letterRefs.forEach((letter, index) => {
-
         // Return to starting positions
-
         letter.position.y = approachStartingValue(letter.position.y, delta * 15, 0)
+
         // secret mode rotations
         letter.rotation.x = approachStartingValue(letter.rotation.x, delta * 5, 0)
         letter.rotation.y = approachStartingValue(letter.rotation.y, delta * 5, 0)

@@ -5,6 +5,8 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import SEO from '../components/seo'
 import { TagContainer, Tag } from '../components/tag'
 
+import { BigSquiggle } from '../components/squiggles'
+
 class ProjectsIndex extends React.Component {
   render() {
     const { data } = this.props
@@ -55,6 +57,7 @@ class ProjectsIndex extends React.Component {
                     </TagContainer>
                   )}
                 </section>
+                <BigSquiggle />
               </article>
             );
           })}

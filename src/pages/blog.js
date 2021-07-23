@@ -3,6 +3,8 @@ import { Link, graphql } from 'gatsby'
 
 import SEO from '../components/seo'
 
+import { BigSquiggle } from '../components/squiggles'
+
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
@@ -40,6 +42,7 @@ class BlogIndex extends React.Component {
               </article>
             )
           })}
+          <BigSquiggle />
         </section>
       </>
     )
