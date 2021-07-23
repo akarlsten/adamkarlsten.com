@@ -1,7 +1,8 @@
 import React from 'react'
-import { FaReact, FaJsSquare, FaCog, FaNodeJs } from 'react-icons/fa'
+import { FaReact, FaJsSquare, FaCog, FaNodeJs, FaPython } from 'react-icons/fa'
 import { GrGatsbyjs, GrGraphQl } from 'react-icons/gr'
 import { SiZapier, SiMongodb } from 'react-icons/si'
+import { GiHolosphere, GiRadioTower } from 'react-icons/gi'
 
 export const TagContainer = ({ children }) => {
   return (
@@ -49,8 +50,8 @@ const Icon = ({ subject }) => {
       )
     case 'ThreeJS':
       return (
-        <svg fill="currentColor" width="1em" height="1em" stroke-linecap="square" stroke-miterlimit="10" version="1.1" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(8.964 4.2527)" fill-rule="evenodd" stroke="#000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="4">
+        <svg fill="currentColor" width="1em" height="1em" strokeLinecap="square" strokeMiterlimit="10" version="1.1" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(8.964 4.2527)" fillRule="evenodd" stroke="#000" strokeLinecap="butt" strokeLinejoin="round" strokeWidth="4">
             <path d="m63.02 200.61-43.213-174.94 173.23 49.874z" />
             <path d="m106.39 50.612 21.591 87.496-86.567-24.945z" />
             <path d="m84.91 125.03-10.724-43.465 43.008 12.346z" />
@@ -59,6 +60,18 @@ const Icon = ({ subject }) => {
             <path d="m84.915 125.06 10.724 43.465-43.008-12.346z" />
           </g>
         </svg>
+      )
+    case 'react-three-fiber':
+      return (
+        <GiHolosphere />
+      )
+    case 'IoT':
+      return (
+        <GiRadioTower />
+      )
+    case 'Python':
+      return (
+        <FaPython />
       )
     default:
       return <FaCog />

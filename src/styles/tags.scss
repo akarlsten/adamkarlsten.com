@@ -47,9 +47,9 @@
 }
 
 .tag__item-ThreeJS {
-  color: $tagGreenFg;
-  border-color: $tagGreenFg;
-  background-color: $tagGreenBg;
+  color: $tagGreyFg;
+  border-color: $tagGreyFg;
+  background-color: $tagGreyBg;
 }
 
 .tag__item-GraphQL {
@@ -73,4 +73,26 @@
 .tag__item-Zapier {
   color: #ff4a00;
   border-color: #ff4a00;
+}
+
+.tag__item-MongoDB {
+  color: $tagGreenFg;
+  border-color: $tagGreenFg;
+}
+
+.tag__item-react-three-fiber {
+  color: $tagReactFg;
+  border-color: $tagGreyFg;
+  background-color: $tagGreyBg;
+}
+
+.tag__item-IoT {
+  color: $tagIndiFg;
+  border-color: $tagIndiFg;
+}
+
+.tag__item-Apollo {
+  color: $white;
+  border-color: $white;
+  background-color: #3f20ba;
 }

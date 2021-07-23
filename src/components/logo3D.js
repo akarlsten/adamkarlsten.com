@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Suspense, useMemo, useCallback, useRef, forwardRef, useLayoutEffect } from 'react'
 import { FontLoader, Vector3, Color } from 'three'
-import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
+import { Canvas, useFrame, useLoader, useThree, extend } from '@react-three/fiber'
+
 
 const Text = forwardRef(({
   children,

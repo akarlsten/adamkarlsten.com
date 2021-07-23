@@ -4,7 +4,6 @@ import { GatsbyImage, getSrc } from "gatsby-plugin-image";
 import { IconContext } from 'react-icons'
 import { FaGithub, FaLink } from 'react-icons/fa'
 
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { TagContainer, Tag } from '../components/tag'
 
@@ -17,7 +16,7 @@ class BlogPostTemplate extends React.Component {
     const featuredImagePath = getSrc(featuredImage)
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
@@ -95,7 +94,7 @@ class BlogPostTemplate extends React.Component {
             </li>
           </ul>
         </nav>
-      </Layout>
+      </>
     );
   }
 }

@@ -2,11 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Bio from '../components/bio'
-import Layout from '../components/layout'
 import LatestPost from '../components/latestpost'
 import Social from '../components/social'
 import SEO from '../components/seo'
-
 class Index extends React.Component {
   render() {
     const { data } = this.props

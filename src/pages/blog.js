@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 class BlogIndex extends React.Component {
@@ -13,7 +12,6 @@ class BlogIndex extends React.Component {
     return (
       <>
         <SEO title="Blog" />
-        <p>Musings, tutorials and other writings..</p>
         <section className="postlist">
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug

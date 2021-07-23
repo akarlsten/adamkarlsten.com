@@ -1,0 +1,29 @@
+
+.wavecontainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    z-index: -1;
+  }
+}
+
+
+.wavecontainer-middle {
+    position: absolute;
+    bottom: 20rem;
+    left: 0;
+    width: 100%;
+  svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    z-index: -1;
+  }
+}

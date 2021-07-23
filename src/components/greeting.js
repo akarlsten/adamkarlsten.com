@@ -72,16 +72,18 @@ function Ray({ direction = 'right', texture, ...props }) {
   )
 }
 
-function Jumbo() {
+function Jumbo({ hovered }) {
   const allObjects = useRef()
   const leftRays = useRef()
   const rightRays = useRef()
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+  const raySpeedFactor = hovered ? 14 : 7
+
   useFrame(({ clock }) => (allObjects.current.position.y = reduceMotion ? 0 : Math.sin(clock.getElapsedTime() * 2)))
-  useFrame(({ clock }) => (leftRays.current.position.x = reduceMotion ? 0 : Math.sin(clock.getElapsedTime() * 7)))
-  useFrame(({ clock }) => (rightRays.current.position.x = reduceMotion ? 0 : -Math.sin(clock.getElapsedTime() * 7)))
+  useFrame(({ clock }) => (leftRays.current.position.x = reduceMotion ? 0 : Math.sin(clock.getElapsedTime() * raySpeedFactor)))
+  useFrame(({ clock }) => (rightRays.current.position.x = reduceMotion ? 0 : -Math.sin(clock.getElapsedTime() * raySpeedFactor)))
 
   return (
     <>
@@ -122,26 +124,32 @@ function Jumbo() {
   )
 }
 
-const Greeting = () => (
-  <Canvas
-    anti
-    flat={true}
-    orthographic={true}
-    dpr={window.devicePixelRatio}
-    camera={{ position: [0, 0, 40], fov: 90, zoom: 7 }}
-  >
-    <ambientLight intensity={0.06} />
-    <pointLight intensity={1.25} position={[40, 40, 40]} />
-    <Suspense fallback={null}>
-      <Jumbo />
-    </Suspense>
-    <OrbitControls
-      enableZoom={false}
-      enablePan={false}
-      minPolarAngle={Math.PI / 2}
-      maxPolarAngle={Math.PI / 2}
-    />
-  </Canvas>
-)
+const Greeting = () => {
+  const [hovered, setHovered] = useState(false)
+
+  return (
+    <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      <Canvas
+        anti
+        flat={true}
+        orthographic={true}
+        dpr={window.devicePixelRatio}
+        camera={{ position: [0, 0, 40], fov: 90, zoom: 7 }}
+      >
+        <ambientLight intensity={0.06} />
+        <pointLight intensity={1.25} position={[40, 40, 40]} />
+        <Suspense fallback={null}>
+          <Jumbo hovered={hovered} />
+        </Suspense>
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 2}
+        />
+      </Canvas>
+    </div>
+  )
+}
 
 export default Greeting

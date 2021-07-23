@@ -10,6 +10,8 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import { StaticImage } from "gatsby-plugin-image";
 import loadable from '@loadable/component'
 
+import { Squiggle } from './squiggles'
+
 const Greeting = loadable(() => import('./greeting'))
 
 const Bio = () => {
@@ -34,6 +36,7 @@ const Bio = () => {
         <div className="bio__logo">
           <Greeting />
         </div>
+        <Squiggle className="bio__squiggles" />
         <p>
           I&apos;m <strong>{author}</strong>, a web developer from Malmö,{' '}
           <span role="img" aria-label="Sweden">

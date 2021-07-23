@@ -8,10 +8,19 @@ canvas {
   // width: 8.9rem;
   // height: 6rem;
   margin-left: -2rem;
+  margin-bottom: 2rem;
   width: 15.8rem;
   height: 7rem;
   position: relative;
   @include phone {
     margin-left: -1.8rem;
   }
+}
+
+
+.background {
+  z-index: -2;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
 }

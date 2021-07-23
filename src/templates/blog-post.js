@@ -23,7 +23,7 @@ class BlogPostTemplate extends React.Component {
     const featuredImagePath = getSrc(featuredImage)
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
@@ -77,7 +77,7 @@ class BlogPostTemplate extends React.Component {
         </nav>
 
         <Disqus config={disqusConfig} />
-      </Layout>
+      </>
     );
   }
 }
