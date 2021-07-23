@@ -130,6 +130,7 @@ const Greeting = () => {
   return (
     <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       <Canvas
+        mode="concurrent"
         anti
         flat={true}
         orthographic={true}
