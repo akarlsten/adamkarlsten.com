@@ -8,8 +8,7 @@ import { BigSquiggle } from '../components/squiggles'
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    const posts = data.allMdx.edges
 
     return (
       <>
@@ -58,7 +57,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: { fields: { sourceInstanceName: { eq: "blog" } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {

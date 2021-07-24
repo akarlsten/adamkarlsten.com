@@ -2,16 +2,16 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from "gatsby-plugin-image";
 import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { IconContext } from 'react-icons'
 import { FaCommentDots } from 'react-icons/fa'
 
-import Layout from '../components/layout'
+
 import SEO from '../components/seo'
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
+    const post = this.props.data.mdx
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const { previous, next, subdirectory } = this.props.pageContext
     const disqusConfig = {
@@ -51,10 +51,9 @@ class BlogPostTemplate extends React.Component {
                 className="blog__image" />
             </div>
           )}
-          <section
-            className="markdown"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <section className="markdown">
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </section>
         </article>
 
         <nav className="post__navigation">
@@ -91,10 +90,10 @@ export const pageQuery = graphql`query BlogPostBySlug($slug: String!) {
       siteUrl
     }
   }
-  markdownRemark(fields: {slug: {eq: $slug}}) {
+  mdx(fields: {slug: {eq: $slug}}) {
     id
     excerpt(pruneLength: 160)
-    html
+    body
     frontmatter {
       title
       date(formatString: "MMMM DD, YYYY")

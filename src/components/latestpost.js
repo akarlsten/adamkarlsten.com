@@ -4,7 +4,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 const LatestPost = () => {
   const data = useStaticQuery(graphql`
     query LatestPostQuery {
-      allMarkdownRemark(
+      allMdx(
         filter: { fields: { sourceInstanceName: { eq: "blog" } } }
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 1
@@ -27,7 +27,7 @@ const LatestPost = () => {
     }
   `)
 
-  const post = data.allMarkdownRemark.edges[0].node
+  const post = data.allMdx.edges[0].node
   const title = post.frontmatter.title || post.fields.slug
 
   return (

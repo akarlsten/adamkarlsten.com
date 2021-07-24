@@ -3,7 +3,7 @@ module.exports = {
     title: 'Adam Karlsten',
     author: 'Adam Karlsten',
     description: 'Portfolio site for Adam Karlsten',
-    siteUrl: 'https://akarlsten.github.io/',
+    siteUrl: 'https://www.adamkarlsten.com',
     social: {
       github: 'akarlsten',
       linkedin: 'adam-karlsten-171b62116'
@@ -32,9 +32,10 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        plugins: [
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {

@@ -10,8 +10,7 @@ import { BigSquiggle } from '../components/squiggles'
 class ProjectsIndex extends React.Component {
   render() {
     const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    const posts = data.allMdx.edges
     return (
       <>
         <SEO title="Projects" />
@@ -75,7 +74,7 @@ export const pageQuery = graphql`{
       title
     }
   }
-  allMarkdownRemark(
+  allMdx(
     filter: {fields: {sourceInstanceName: {eq: "projects"}}}
     sort: {fields: [frontmatter___date], order: DESC}
   ) {

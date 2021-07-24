@@ -10,7 +10,6 @@ import { BigSquiggle } from '../components/squiggles'
 class Index extends React.Component {
   render() {
     const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
 
     return (
       <>

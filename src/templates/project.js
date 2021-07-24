@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from "gatsby-plugin-image";
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { IconContext } from 'react-icons'
 import { FaGithub, FaLink } from 'react-icons/fa'
 
@@ -11,8 +12,7 @@ import { BigSquiggle } from '../components/squiggles'
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
+    const post = this.props.data.mdx
     const { previous, next, subdirectory } = this.props.pageContext
     const { featuredImage } = post.frontmatter
     const featuredImagePath = getSrc(featuredImage)
@@ -72,10 +72,9 @@ class BlogPostTemplate extends React.Component {
               </div>
             </IconContext.Provider>
           )}
-          <section
-            className="markdown"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <section className="markdown">
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </section>
         </article>
         <BigSquiggle className="post__navigation-squiggle" />
         <nav className="post__navigation">
@@ -109,10 +108,10 @@ export const pageQuery = graphql`query ProjectBySlug($slug: String!) {
       title
     }
   }
-  markdownRemark(fields: {slug: {eq: $slug}}) {
+  mdx(fields: {slug: {eq: $slug}}) {
     id
     excerpt(pruneLength: 160)
-    html
+    body
     frontmatter {
       title
       date(formatString: "MMMM DD, YYYY")
