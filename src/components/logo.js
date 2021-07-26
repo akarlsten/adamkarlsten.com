@@ -7,16 +7,21 @@ const Logo3D = loadable(() => import('./logo3D'))
 
 
 const Logo = ({ secretMode }) => {
-
   const [loaded, setLoaded] = useState(false)
   const [opaque, setOpaque] = useState(false)
-  const { progress } = useProgress()
+  const { progress, errors, item } = useProgress()
 
   useEffect(() => {
     if (progress >= 100) {
       setLoaded(true)
     }
   }, [progress])
+
+  useEffect(() => {
+    if (errors.length > 0) {
+      console.log(errors)
+    }
+  }, [errors])
 
   useEffect(() => {
     let t

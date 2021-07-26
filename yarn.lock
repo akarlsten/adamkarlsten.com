@@ -2961,6 +2961,11 @@ babel-plugin-remove-graphql-queries@^3.10.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-3.10.0.tgz#879bd4aaa95a0516bf358d6b3653a1cec0e2e1d1"
   integrity sha512-boXe4V22Tz5DhlbsyNFWRMSYpAQhbBksxnHQZF3Rs1TVptIcm3RmJKL10ze6qTKJW2a97J3qpmAmNpi/CFTttg==
 
+babel-plugin-remove-graphql-queries@^3.11.0-next.0:
+  version "3.11.0-next.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-3.11.0-next.0.tgz#e79851305f7ee3c19ca74c3ba05667d31a717bb4"
+  integrity sha512-JiwX29DP7+i6lcJccGjbxhR3WkBsP7etUWd4xeLRlebpI5DSdzN341rrXUj9Ot8pTYiai02sUedPAeDvz8ZUtQ==
+
 babel-plugin-syntax-object-rest-spread@^6.8.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-object-rest-spread/-/babel-plugin-syntax-object-rest-spread-6.13.0.tgz#fd6536f2bce13836ffa3a5458c4903a597bb3bf5"
@@ -6346,6 +6351,20 @@ gatsby-core-utils@^2.10.0:
     tmp "^0.2.1"
     xdg-basedir "^4.0.0"
 
+gatsby-core-utils@^2.11.0-next.0:
+  version "2.11.0-next.0"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-2.11.0-next.0.tgz#311731e3be6efd7f96b838cef45668514f5c197c"
+  integrity sha512-v36of6FEzstzAg8EG4LNTrlHEM/cRazA52fXoDgliHoh+/mqJKcd9vezSU1JOd5Jo728M1/5KW2NxlStVjxS3Q==
+  dependencies:
+    ci-info "2.0.0"
+    configstore "^5.0.1"
+    file-type "^16.2.0"
+    fs-extra "^8.1.0"
+    node-object-hash "^2.0.0"
+    proper-lockfile "^4.1.1"
+    tmp "^0.2.1"
+    xdg-basedir "^4.0.0"
+
 gatsby-graphiql-explorer@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-1.10.0.tgz#61811a1e96a715b07a8b89673ac1a943fd42f9a0"
@@ -6435,21 +6454,21 @@ gatsby-plugin-humans-txt@^1.1.4:
     humans-generator "^2.1.1"
     react "^16.8.6"
 
-gatsby-plugin-image@^1.9.0:
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-1.10.1.tgz#27a5eb2031f16d5b7320c2399266decdf295618a"
-  integrity sha512-0gbp3XqQFOAUnyN1GJOho1Eng+rQEMy1aPhRlb1s2xdWW3zx2Uqt9N7ZRsBMo1PIxBSFeqBKzU9GDux2RVyUCA==
+gatsby-plugin-image@^1.11.0-next.2:
+  version "1.11.0-next.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-1.11.0-next.2.tgz#beb2dab5b81391a941fd2aeba43eadbf373df969"
+  integrity sha512-Fhvq7piimGFbmvzNE7y5WhdrljyPqrdOfmdTpGxFC3m5k/efE8LHtoLUtYS815GmVqUodvp15f54GSN6BaC6nA==
   dependencies:
     "@babel/code-frame" "^7.14.0"
     "@babel/parser" "^7.14.7"
     "@babel/traverse" "^7.14.7"
     babel-jsx-utils "^1.1.0"
-    babel-plugin-remove-graphql-queries "^3.10.0"
+    babel-plugin-remove-graphql-queries "^3.11.0-next.0"
     camelcase "^5.3.1"
     chokidar "^3.5.1"
     common-tags "^1.8.0"
     fs-extra "^8.1.0"
-    gatsby-core-utils "^2.10.0"
+    gatsby-core-utils "^2.11.0-next.0"
     objectFitPolyfill "^2.3.0"
     prop-types "^15.7.2"
 
@@ -7605,6 +7624,11 @@ hast-util-to-parse5@^6.0.0:
     web-namespaces "^1.0.0"
     xtend "^4.0.0"
     zwitch "^1.0.0"
+
+hast-util-whitespace@^1.0.0:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/hast-util-whitespace/-/hast-util-whitespace-1.0.4.tgz#e4fe77c4a9ae1cb2e6c25e02df0043d0164f6e41"
+  integrity sha512-I5GTdSfhYfAPNztx2xJRQpG8cuDSNt599/7YUn7Gx/WxNMsG+a835k97TDkFgk123cwjfwINaZknkKkphx/f2A==
 
 hastscript@^6.0.0:
   version "6.0.0"
@@ -12163,6 +12187,14 @@ remark-stringify@^8.1.0:
     stringify-entities "^3.0.0"
     unherit "^1.0.4"
     xtend "^4.0.1"
+
+remark-unwrap-images@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/remark-unwrap-images/-/remark-unwrap-images-2.1.0.tgz#1dda005e8397c6f1792e4c8d38ed29602f9284cc"
+  integrity sha512-DpM7oEIXNjS3aDQpzxWrTWhUJcd5b8LznbSZnSPi1Yc3fJgLYJlx9uzkj5ekyp01PSBbSbPM2jq4959mcIetvA==
+  dependencies:
+    hast-util-whitespace "^1.0.0"
+    unist-util-visit "^2.0.0"
 
 remark@^10.0.1:
   version "10.0.1"

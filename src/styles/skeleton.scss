@@ -1,0 +1,10 @@
+
+@keyframes bgColor {
+  from {background-color: $black;}
+  to {background-color: lighten($black, 5%);}
+}
+
+.skeleton {
+background: $black;
+animation: bgColor 0.4s infinite alternate ease;
+}

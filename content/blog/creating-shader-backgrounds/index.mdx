@@ -1,0 +1,132 @@
+---
+title: Creating cool shader backgrounds in react-three-fiber
+date: "2021-07-24"
+---
+
+import CreationShader from './creationShader'
+import VitaShader from './vitaArchitecture'
+
+Shaders are a fantastic way to create effects that would be impossible with regular CSS, such as exotic gradients or weird kaleidoscopic effects like the one below! 
+
+<CreationShader />
+
+*Based on [Creation](https://www.shadertoy.com/view/XsXXDn) by Danilo Guanabara (Silexars) on Shadertoy.*
+
+I recently read an [article](https://threejsfundamentals.org/threejs/lessons/threejs-shadertoy.html) about an easy way to display these shaders with THREE.js, and wanted to figure out how to do the same thing when using react-three-fiber inside a React app.
+I managed it, and decided to write down the basic process for anyone interested.
+
+Note that you should probably be familiar with THREE, shaders, and react-three-fiber for any of this to make sense. The website from the article is a great resource! 
+
+The basic idea is to create a ShaderMaterial with your chosen shader, then use the material on a flat plane placed right infront of an orthographic camera in your scene (or Canvas in r3f).
+
+We begin by creating the ShaderMaterial:
+
+```js
+import { Vector3 } from 'three'
+import { extend } from '@react-three/fiber'
+import { shaderMaterial } from '@react-three/drei'
+
+
+const CreationMaterial = shaderMaterial({
+  time: 0.,
+  resolution: new Vector3()
+},
+`
+varying vec2 vUv;
+
+void main()	{
+  vUv = uv;
+
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
+}
+`,
+`
+uniform vec3 resolution;
+uniform float time;
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord ){
+	vec3 c;
+	float l, z = time;
+
+	for(int i=0;i<10;i++) {
+		vec2 uv, p = fragCoord.xy/resolution.xy;
+		uv = p;
+		p -= .5;
+		p.x *= resolution.x / resolution.y;
+		z += 2.0;
+		l = length(p);
+		uv += p / l * (sin(z / 2.) + 1.) * abs(sin(l * 3. - z * .5));
+		c[i] = .01 / length(abs(mod(uv, 1.) -.5));
+	}
+
+	fragColor = vec4(c / l, time / 2.);
+}
+
+void main() {
+  mainImage(gl_FragColor, gl_FragCoord.xy);
+}
+`)
+
+extend({ CreationMaterial })
+```
+
+Here we use [drei](https://github.com/pmndrs/drei)'s `shaderMaterial` export to quickly create a ShaderMaterial, as it makes it easier to handle uniforms. We then use `extend` to register it as a `react-three-fiber` object, making it usable in the rest of our scene later.
+
+We then move on to using our new material:
+
+```js
+import { useRef } from 'react'
+import { useThree, useFrame } from '@react-three/fiber'
+
+const ShaderObject = () => {
+  const mesh = useRef()
+
+  const { size } = useThree()
+
+  useFrame((state, delta) => {
+    mesh.current.material.uniforms.time.value += delta
+  })
+
+  return (
+    <mesh ref={mesh}>
+      <planeBufferGeometry args={[size.width, size.height]} />
+      <creationMaterial resolution={[size.width, size.height, 1]} />
+    </mesh>
+  )
+}
+```
+
+We create a plane mesh, setting the width and height to the same size as the canvas with use of the `size` variable destructured from `useThree`. Our particular shader also requires the current scene's size as a uniform, so we pass that in also. Finally we use r3f's `useFrame` to increment the `time` uniform with the delta time from the last frame, ensuring a smooth animation.
+
+Finally we put it all together in a `react-three-fiber` canvas:
+
+```js
+import { Canvas } from '@react-three/fiber'
+
+const Background = () => {
+
+  return (
+      <Canvas
+        orthographic={true}
+        dpr={window.devicePixelRatio}
+      >
+        <ShaderObject />
+      </Canvas>
+  )
+}
+
+
+export default Background
+```
+
+The only really important detail here is to set `orthographic` to true to avoid any issues related to perspective if you ever start moving parts of the scene around.
+
+That's it! You can of course take it further in many ways (we don't have to use a plane, for example), and since we're using `react-three-fiber` it's very simple to hook up your shaders to the rest of your application.
+
+Try clicking the swirly orb below! It uses a simple `useState` hook toggled by clicking to change the rate some of the shader uniforms animate.
+
+<VitaShader />
+
+Furthermore it demonstrates how you can use these shaders as elements on a page, they can be absolutely positioned behind other elements, and the canvas can be modified via CSS (transforms, probably clip-paths, etc.).
+
+Performance is of course a consideration, but used sparingly and with fallbacks for weaker devices it should be no problem!
