@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaReact, FaJsSquare, FaCog, FaNodeJs, FaPython } from 'react-icons/fa'
 import { GrGatsbyjs, GrGraphQl } from 'react-icons/gr'
-import { SiZapier, SiMongodb } from 'react-icons/si'
+import { SiZapier, SiMongodb, SiTypescript } from 'react-icons/si'
 import { GiHolosphere, GiRadioTower } from 'react-icons/gi'
 
 export const TagContainer = ({ children }) => {
@@ -72,6 +72,10 @@ const Icon = ({ subject }) => {
     case 'Python':
       return (
         <FaPython />
+      )
+    case 'Typescript':
+      return (
+        <SiTypescript />
       )
     default:
       return <FaCog />

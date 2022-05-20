@@ -7,7 +7,9 @@ module.exports = {
     social: {
       github: 'akarlsten',
       linkedin: 'adam-karlsten-171b62116'
-    }
+    },
+    github: 'akarlsten',
+    linkedin: 'adam-karlsten-171b62116'
   },
   plugins: [
     {
@@ -34,7 +36,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        extensions: [`.md`, `.mdx`],
+        extensions: ['.md', '.mdx'],
         remarkPlugins: [require('remark-unwrap-images')],
         gatsbyRemarkPlugins: [
           {
@@ -61,10 +63,10 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-sitemap',
     {
-      resolve: `gatsby-plugin-layout`,
+      resolve: 'gatsby-plugin-layout',
       options: {
-        component: require.resolve('./src/components/layout.js'),
-      },
+        component: require.resolve('./src/components/layout.js')
+      }
     },
     'gatsby-plugin-catch-links',
     {

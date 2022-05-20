@@ -10,6 +10,7 @@ const Social = () => {
         siteMetadata {
           social {
             github
+            linkedin
           }
         }
       }
