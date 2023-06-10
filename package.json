@@ -10,7 +10,7 @@
     "@mdx-js/react": "^1.6.22",
     "@react-three/drei": "^5.1.2",
     "@react-three/fiber": "^6.1.5",
-    "gatsby": "^3.10.1",
+    "gatsby": "^4.25.7",
     "gatsby-image": "^3.5.0",
     "gatsby-plugin-catch-links": "^3.5.0",
     "gatsby-plugin-disqus": "^1.2.2",
